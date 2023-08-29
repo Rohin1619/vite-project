@@ -1,44 +1,19 @@
 import React, { useState } from 'react';
+import ToDoList from '../Page/ToDoList';
 
-const ListItem = (props) => {
+const ListItem = () => {
+  const [task, setTask] = useState([]);
 
-  const {task,setTask}= props;
-  const [id, setId] = useState('');
-
-  const addTask = () => {
-    if (task && id) {
-      const newTask = { task, id };
-      setTask([...task, newTask]);
-      setTask('');
-      setId('');
-    }
+  const updateTask = (newTask) => {
+    setTask(newTask);
   };
-
-  const taskListItems = task.map((taskObj, index) => (
-    <li key={index}>
-      ID: {taskObj.id} Task: {taskObj.task}
-    </li>
-  ));
 
   return (
     <>
-      <div>
-        <input
-          type="text"
-          placeholder="Enter Task"
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Enter ID"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-        />
-        <button onClick={addTask}>Add Task</button>
-      </div>
+      <ToDoList task={task} setTask={setTask} />
     </>
   );
 };
 
 export default ListItem;
+
