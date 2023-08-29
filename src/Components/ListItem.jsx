@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
-import ToDoList from '../Page/ToDoList';
+import React from 'react';
 
-const ListItem = () => {
-  const [task, setTask] = useState([]);
-
-  const updateTask = (newTask) => {
-    setTask(newTask);
-  };
+const ListItem = (props) => {
+  const {taskObj } = props;
 
   return (
-    <>
-      <ToDoList task={task} setTask={setTask} />
-    </>
+    <div className="container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', border: '1px solid', borderRadius: '12px', padding: '16px' }}>
+      <div className="container-left">
+        <h2>{taskObj.task}</h2>
+      </div>
+      <div className="container-right" style={{ margin: '16px' }}>
+        <button className="editBtn">
+          Edit
+        </button>
+        <button className="delBtn">
+          Delete
+        </button>
+      </div>
+    </div>
   );
 };
 
