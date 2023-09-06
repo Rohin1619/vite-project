@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 const ListItem = (props) => {
   const { taskObj, onDelete, onEdit, isEditing, onEditClick } = props;
@@ -10,12 +10,12 @@ const ListItem = (props) => {
 
   const handleEditClick = () => {
     if (isEditing) {
-      onEdit(taskObj.id, editedTask); 
+      onEdit(taskObj.id, editedTask);
     } else {
       onEditClick(taskObj.id);
     }
   };
-  
+
 
   const handleTaskChange = (e) => {
     setEditedTask(e.target.value);
@@ -31,11 +31,11 @@ const ListItem = (props) => {
             value={editedTask}
             onChange={handleTaskChange}
           />
-          
+
         ) : (
           <>
             <h2>{taskObj.id}</h2>
-          <h2>{taskObj.task}</h2>
+            <h2>{taskObj.task}</h2>
           </>
 
         )}
